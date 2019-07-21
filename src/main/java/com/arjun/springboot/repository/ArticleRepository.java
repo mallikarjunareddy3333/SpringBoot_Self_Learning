@@ -12,6 +12,6 @@ public interface ArticleRepository extends CrudRepository<Article, Long> {
 	
 	List<Article> findByTitle(String title);
 	List<Article> findDistinctByCategory(String category);
-	List<Article> findTitleAndCategory(String title, String category);
+	List<Article> findByTitleAndCategory(String title, String category);
 	
 }

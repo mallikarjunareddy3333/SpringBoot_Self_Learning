@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.arjun.springboot.entity.Article;
 import com.arjun.springboot.repository.ArticleRepository;
 
+@Service
 public class ArticleService implements IArticleService {
 
 	@Autowired
@@ -27,7 +29,7 @@ public class ArticleService implements IArticleService {
 
 	@Override
 	public synchronized boolean addArticle(Article article) {
-		List<Article> list = articleRepo.findTitleAndCategory(article.getTitle(), article.getCategory());
+		List<Article> list = articleRepo.findByTitleAndCategory(article.getTitle(), article.getCategory());
 		if (list.size() > 0) {
 			return false;
 		} else {
